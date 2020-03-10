@@ -1,0 +1,1 @@
+parallel-ssh -i -x-A -H "$("$(dirname "$0")"/list-nodes.py -c "$@")" 'sudo tee /etc/cron.d/cassandra_backup <<< "0 18 * * * root /opt/cassandra-scripts/backup-cassandra.py >> /opt/cassandra-scripts/backuplogs.txt 2>&1"'
